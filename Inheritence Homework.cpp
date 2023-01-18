@@ -2,12 +2,29 @@
 #include<string>
 using namespace std;
 class Account {
-public:
-    int accountNumber = 0;
+private:
+    int accountNumber;
     string accountName;
-    double accountBalance = 0;
+    
+public:
+    double accountBalance;
     Account()
     {
+    }
+    int setAccountNumber(int Number)
+    {
+        accountNumber = Number;
+        return Number;
+    }
+    string setAccountName(string Name)
+    {
+        accountName = Name;
+        return Name;
+    }
+    double setAccountBalance(double Balance)
+    {
+        accountBalance = Balance;
+        return Balance;
     }
     void deposit(double amount) 
     {
@@ -35,7 +52,7 @@ class SavingAccount: public Account
 public:
     double interestRate = 0.25; //interest rate is defined as 25%
 
-    double calculateInterest()
+  double calculateInterest()
     {
         double interest;
         interest = accountBalance * interestRate;
@@ -47,8 +64,9 @@ int main()
 {
     //Account for me
     SavingAccount Abdullah;
-    Abdullah.accountName = "Abdullah Shawani";
-    Abdullah.accountNumber = 1;
+    Abdullah.setAccountName("Abdullah Shawani");
+    Abdullah.setAccountNumber(1);
+    Abdullah.setAccountBalance(7500);
     Abdullah.displayAccountInfo();
     Abdullah.deposit(1200);
     Abdullah.displayBalance();
@@ -59,13 +77,14 @@ int main()
     cout << "\n";
     //Example account
     SavingAccount John;
-    John.accountName = "John Doe";
-    John.accountNumber = 0;
+    John.setAccountName("John Doe");
+    John.setAccountNumber(0);
+    John.setAccountBalance(12300);
     John.displayAccountInfo();
     John.deposit(7800);
     John.displayBalance();
     John.calculateInterest();
-    John.withdraw(2100);
+    John.withdraw(5900);
     John.displayBalance();
     John.calculateInterest();
 }
